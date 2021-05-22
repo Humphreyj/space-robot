@@ -1,6 +1,5 @@
 import os
 import asyncio
-import schedule
 import time
 import random
 import datetime
@@ -70,6 +69,6 @@ async def send_greeting():
     time = datetime.datetime.today()
     if time.hour == 10 and time.minute == 00:
             
-        channel = await discord.utils.get(client.guilds[0].channels, name='bot-test').send(f'Have a good {datetime.datetime.now().strftime("%A")}, you beautiful bastards!')
+        channel = await discord.utils.get(client.guilds[0].channels, name='space-general').send(f'Have a good {datetime.datetime.now().strftime("%A")}, you beautiful bastards!')
 
 client.run(TOKEN)
