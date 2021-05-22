@@ -6,7 +6,7 @@ import datetime
 import discord
 from discord.ext import commands, tasks
 from itertools import cycle
-from python-dotenv import load_dotenv
+
 
 load_dotenv()
 
