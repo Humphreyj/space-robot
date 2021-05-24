@@ -65,7 +65,7 @@ async def change_status():
 @tasks.loop(seconds=55)
 async def send_greeting():
     time = datetime.datetime.today()
-    if time.hour == 10 and time.minute == 00:
+    if time.hour == 15 and time.minute == 00:
             
         channel = await discord.utils.get(client.guilds[0].channels, name='space-general').send(f'Have a good {datetime.datetime.now().strftime("%A")}, you beautiful bastards!')
 
