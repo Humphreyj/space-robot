@@ -52,9 +52,9 @@ async def bank(ctx):
 @client.command()
 async def deposit(ctx, amount):
     result = int(amount) + bank_balance
-    f_amount = "{:,.2f}".format(int(amount))
+    formatted_amount = "{:,.2f}".format(int(amount))
     final = "{:,.2f}".format(result)
-    await ctx.send(f'{ctx.message.author.nick} deposited {f_amount} in the bank! Bank balance is currently {final} aUEC')
+    await ctx.send(f'{ctx.message.author.nick} deposited {formatted_amount} in the bank! Bank balance is currently {final} aUEC')
 @client.command()
 async def set_balance(ctx, amount):
     bank_balance = int(amount)
@@ -67,7 +67,7 @@ async def change_status():
 @tasks.loop(seconds=55)
 async def send_greeting():
     time = datetime.datetime.today()
-    if time.hour == 10 and time.minute == 00:
+    if time.hour == 13 and time.minute == 00:
             
         channel = await discord.utils.get(client.guilds[0].channels, name='space-general').send(f'Have a good {datetime.datetime.now().strftime("%A")}, you beautiful bastards!')
 
