@@ -10,7 +10,7 @@ from itertools import cycle
 
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-status = cycle(['helium prices rise', 'the sunset on Daymar','a Ninetails Lockdown', 'Ruffels sleep', 'YY_McFly fly', 'The Morrow tour'])
+status = cycle(['fireworks at Everus', 'the sunset on Daymar','a Ninetails Lockdown', 'Ruffels sleep', 'old combat footage', 'The Morrow tour', 'The Bengal flyby'])
 client = commands.Bot(command_prefix = "$")
 bank_balance = 4534546
 UEC = "{:,.2f}".format(bank_balance)
@@ -59,14 +59,15 @@ async def set_balance(ctx, amount):
    
     final = "{:,.2f}".format(bank_balance)
     await ctx.send(f' Bank balance is now {final} aUEC')
-@tasks.loop(seconds=45)
+@tasks.loop(seconds=180)
 async def change_status():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=next(status)))
-@tasks.loop(seconds=55)
+@tasks.loop(hours=1)
 async def send_greeting():
+    day = datetime.datetime.now().strftime("%A")
     time = datetime.datetime.today()
-    if time.hour == 15 and time.minute == 00:
-            
-        channel = await discord.utils.get(client.guilds[0].channels, name='space-general').send(f'Have a good {datetime.datetime.now().strftime("%A")}, you beautiful bastards!')
+    if day == "Tuesday":
+        if time.hour == 15:  
+            await discord.utils.get(client.guilds[0].channels, name='space-general').send(f"{day} is a good day for trainin'! Grab a battle buddy and get some time in Arena Commander!")
 
 client.run(TOKEN)
